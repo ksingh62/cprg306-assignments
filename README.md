@@ -1,36 +1,34 @@
+<h1>CPRG306 Assignments Repository</h1>
+
+<h2>Overview</h2>
+
+This project serves as the central repository for all assignments in the CPRG 306: Web Development 2 course. Each assignment is organized in weekly folders within the project, and this structure ensures consistency and ease of navigation.
+The assignment involves creating a new Next.js project and implementing a different pages every week, including a React component and modifications to the root page.
+
+##
+
 This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
 
-## Getting Started
+## Installation Instructions
 
-First, run the development server:
+To get the project up and running, follow these steps:
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+1. Clone the repository: git clone https://github.com/ksingh62/cprg306-assignments.git
+2. Navigate to the project folder: cd cprg306-assignments
+3. Install dependencies: npm install
+4. Start the development server: npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+## Usage
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+After installation, you can access different weeks' assignments by navigating to the respective URLs. For example:
 
-## Learn More
+- Root page: http://localhost:3000/
+- Week 2 page: http://localhost:3000/week-2
 
-To learn more about Next.js, take a look at the following resources:
+Ensure that you view the pages in the browser to verify the expected output.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## License
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+This project is open source and available under the [MIT License](LICENSE).
