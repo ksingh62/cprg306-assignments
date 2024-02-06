@@ -1,10 +1,10 @@
-function Item(props) {
+function Item({name, quantity, category}) {
   return (
     <>
     <ul>
-        <li>Name: {props.name}</li>
-        <li>Quantity: {props.quantity}</li>
-        <li>Category: {props.category}</li>
+        <li>{name}</li>
+        <li>{quantity}</li>
+        <li>{category}</li>
     </ul>
     </>
   );
