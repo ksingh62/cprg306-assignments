@@ -1,10 +1,9 @@
 function Item({name, quantity, category}) {
   return (
     <>
-    <ul>
-        <li>{name}</li>
-        <li>{quantity}</li>
-        <li>{category}</li>
+    <ul className="bg-slate-900 mb-4 mt-4 ml-2 container p-2 max-w-96">
+        <li className="text-xl font-bold">{name}</li>
+        <li className="text-sm">Buy {quantity} in {category}</li>
     </ul>
     </>
   );
