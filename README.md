@@ -1,5 +1,7 @@
 <h1>CPRG306 Assignments Repository</h1>
 
+The web app is hosted by Vercel at https://cprg306-assignments-rose-mu.vercel.app/
+
 <h2>Overview</h2>
 
 This project serves as the central repository for all assignments in the CPRG 306: Web Development 2 course. Each assignment is organized in weekly folders within the project, and this structure ensures consistency and ease of navigation.
