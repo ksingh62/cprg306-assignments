@@ -54,41 +54,53 @@ Category: ${category}`);
   };
 
   return (
-    <main>
-      <form onSubmit={handleSubmit}>
-        <div>
-          <input
-            required
-            type="text"
-            name="name"
-            value={name}
-            onChange={handleNameChange}
-            placeholder="Item name"
-          ></input>
-        </div>
+    <main className="flex align-items justify-center">
+      <div className="w-full max-w-md bg-slate-800 text-black p-8 rounded-lg shadow-md mt-8">
+        <form className="w-full" onSubmit={handleSubmit}>
+          <div className="mb-4">
+            <input
+              required
+              type="text"
+              name="name"
+              value={name}
+              onChange={handleNameChange}
+              placeholder="Item name"
+              className="w-full px-4 py-2 rounded-lg border focus:outline-none focus:border-blue-500"
+            ></input>
+          </div>
 
-        <div>
-          <input
-            type="number"
-            name="quantity"
-            min={1}
-            max={99}
-            value={quantity}
-            required
-            onChange={handleQuantityChange}
-          ></input>
-        </div>
+          <div className="flex justify-between space-x-4 mb-4">
+            <input
+              type="number"
+              name="quantity"
+              min={1}
+              max={99}
+              value={quantity}
+              required
+              onChange={handleQuantityChange}
+              className="w-24 px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500"
+            ></input>
 
-        <div>
-          <select type="text" value={category} onChange={handleCategoryChange}>
-            {options.map((option, index) => (
-              <option key={index} label={option} value={option}></option>
-            ))}
-          </select>
-        </div>
+            <select
+              type="text"
+              value={category}
+              onChange={handleCategoryChange}
+              className="w-40 px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500 "
+            >
+              {options.map((option, index) => (
+                <option key={index} label={option} value={option}></option>
+              ))}
+            </select>
+          </div>
 
-        <button type="submit">Submit</button>
-      </form>
+          <button
+            type="submit"
+            className="w-full py-2 px-4 bg-blue-500 hover:bg-blue-700 rounded-lg text-white"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
     </main>
   );
 }
