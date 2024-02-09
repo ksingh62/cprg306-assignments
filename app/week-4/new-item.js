@@ -6,13 +6,13 @@ function NewItem() {
   const [quantity, setQuantity] = useState(1);
   const [category, setCategory] = useState("produce");
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const handleSubmit = (event) => {
+    event.preventDefault();
 
     const item = {
-      name: name,
-      quantity: quantity,
-      category: category,
+      name,
+      quantity,
+      category,
     };
 
     console.log(item);
@@ -39,45 +39,55 @@ function NewItem() {
     "Other",
   ];
 
+  const handleNameChange = (event) => {
+    setName(event.target.value);
+  };
+
+  const handleQuantityChange = (event) => {
+    setQuantity(event.target.value);
+  };
+
+  const handleCategoryChange = (event) => {
+    setCategory(event.target.value);
+  };
+
   return (
-    <form>
-      <div>
-        <input
-          type="text"
-          name="name"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          required
-          placeholder="Item name"
-        ></input>
-      </div>
+    <main>
+      <form>
+        <div>
+          <input
+            type="text"
+            name="name"
+            value={name}
+            onChange={handleNameChange}
+            required
+            placeholder="Item name"
+          ></input>
+        </div>
 
-      <div>
-        <input
-          type="number"
-          name="quantity"
-          min={1}
-          max={99}
-          value={quantity}
-          required
-          onChange={(e) => setQuantity(e.target.value)}
-        ></input>
-      </div>
+        <div>
+          <input
+            type="number"
+            name="quantity"
+            min={1}
+            max={99}
+            value={quantity}
+            required
+            onChange={handleQuantityChange}
+          ></input>
+        </div>
 
-      <div>
-        <select
-          type="text"
-          value={category}
-          onChange={(e) => setCategory(e.target.value)}
-        >
-          {options.map((option, index) => (
-            <option key={index} label={option} value={option}></option>
-          ))}
-        </select>
-      </div>
+        <div>
+          <select type="text" value={category} onChange={handleCategoryChange}>
+            {options.map((option, index) => (
+              <option key={index} label={option} value={option}></option>
+            ))}
+          </select>
+        </div>
 
-      <button onClick={handleSubmit}>Submit</button>
-    </form>
+        <button onClick={handleSubmit}>Submit</button>
+      </form>
+    </main>
   );
 }
 
