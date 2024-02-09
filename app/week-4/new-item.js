@@ -17,7 +17,9 @@ function NewItem() {
 
     console.log(item);
 
-    alert(`Added Item: ${name}, Quantity: ${quantity}, Category: ${category}`);
+    alert(`Added Item: ${name}
+Quantity: ${quantity}
+Category: ${category}`);
 
     // Reset state variables to initial values
     setName("");
@@ -53,14 +55,14 @@ function NewItem() {
 
   return (
     <main>
-      <form>
+      <form onSubmit={handleSubmit}>
         <div>
           <input
+            required
             type="text"
             name="name"
             value={name}
             onChange={handleNameChange}
-            required
             placeholder="Item name"
           ></input>
         </div>
@@ -85,7 +87,7 @@ function NewItem() {
           </select>
         </div>
 
-        <button onClick={handleSubmit}>Submit</button>
+        <button type="submit">Submit</button>
       </form>
     </main>
   );

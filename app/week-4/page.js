@@ -1,9 +1,9 @@
 import NewItem from "./new-item";
 
 function Page() {
-    return(
-        <NewItem/>
-    )
+  return(
+      <NewItem/>
+  )
 }
 
 export default Page;
