@@ -85,7 +85,7 @@ Category: ${category}`);
               type="text"
               value={category}
               onChange={handleCategoryChange}
-              className="w-40 px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500 "
+              className="w-44 px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:border-blue-500 "
             >
               {options.map((option, index) => (
                 <option key={index} label={option} value={option}></option>
