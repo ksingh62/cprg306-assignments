@@ -12,13 +12,26 @@ function ItemList() {
     } else if (sortBy === "category") {
       return a.category.localeCompare(b.category);
     }
+    else if (sortBy === "groupedCategory") {
+        return a.category.charAt(0).localeCompare(b.category.charAt(0));
+      }
     return 0;
   });
 
-  console.log(sortedItems);
+  //   console.log(sortedItems);
+
+  const groupedItems = sortedItems.reduce((acc, item) => {
+    if (!acc[item.category]) {
+      acc[item.category] = [];
+    }
+    acc[item.category].push(item);
+    return acc;
+  }, {});
+
+//   console.log(groupedItems);
 
   return (
-    <>
+    <main>
       <div className="flex gap-2 items-center">
         <p>Sort By: </p>
         <button
@@ -37,15 +50,38 @@ function ItemList() {
         >
           Category
         </button>
-        
+
+        <button
+          onClick={() => setSortBy("groupedCategory")}
+          className={`bg-${
+            sortBy === "group" ? "green" : "slate"
+          }-800 border rounded p-2`}
+        >
+          Grouped Category
+        </button>
       </div>
 
       <ul>
-        {items.map((item, index) => (
-          <Item key={index} {...item}></Item>
-        ))}
+        {sortBy === "groupedCategory"
+          ? (Object.entries(groupedItems).map(([category, items]) => (
+              <div key={category}>
+                <h2 className="capitalize text-xl mt-4">{category}</h2>
+                <ul>
+                  {items.map((item, index) => (
+                    <li key={index}>    
+                     <Item key={index} {...item}></Item>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )))
+          : (sortedItems.map((item, index) => (
+              <li key={index}>
+                <Item key={index} {...item}></Item>
+              </li>
+            )))}
       </ul>
-    </>
+    </main>
   );
 }
 
