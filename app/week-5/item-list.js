@@ -11,10 +11,9 @@ function ItemList() {
       return a.name.localeCompare(b.name);
     } else if (sortBy === "category") {
       return a.category.localeCompare(b.category);
+    } else if (sortBy === "groupedCategory") {
+      return a.category.charAt(0).localeCompare(b.category.charAt(0));
     }
-    else if (sortBy === "groupedCategory") {
-        return a.category.charAt(0).localeCompare(b.category.charAt(0));
-      }
     return 0;
   });
 
@@ -28,34 +27,34 @@ function ItemList() {
     return acc;
   }, {});
 
-//   console.log(groupedItems);
+  //   console.log(groupedItems);
 
   return (
     <main>
-      <div className="flex gap-2 items-center">
+      <div className="flex gap-3 items-center">
         <p>Sort By: </p>
         <button
           onClick={() => setSortBy("name")}
-          className={`bg-${
-            sortBy === "name" ? "green" : "slate"
-          }-800 border rounded p-2 font-bold`}
+          className={`${
+            sortBy === "name" ? "bg-sky-500 font-bold" : "bg-sky-700"
+          } border rounded p-1 px-3`}
         >
           Name
         </button>
         <button
           onClick={() => setSortBy("category")}
-          className={`bg-${
-            sortBy === "category" ? "green" : "slate"
-          }-800 border rounded p-2`}
+          className={`${
+            sortBy === "category" ? "bg-sky-500 font-bold" : "bg-sky-700"
+          } border rounded p-1 px-3`}
         >
           Category
         </button>
 
         <button
           onClick={() => setSortBy("groupedCategory")}
-          className={`bg-${
-            sortBy === "group" ? "green" : "slate"
-          }-800 border rounded p-2`}
+          className={`${
+            sortBy === "groupedCategory" ? "bg-sky-500 font-bold" : "bg-sky-700"
+          } border rounded p-1 px-3`}
         >
           Grouped Category
         </button>
@@ -63,23 +62,23 @@ function ItemList() {
 
       <ul>
         {sortBy === "groupedCategory"
-          ? (Object.entries(groupedItems).map(([category, items]) => (
+          ? Object.entries(groupedItems).map(([category, items]) => (
               <div key={category}>
                 <h2 className="capitalize text-xl mt-4">{category}</h2>
                 <ul>
                   {items.map((item, index) => (
-                    <li key={index}>    
-                     <Item key={index} {...item}></Item>
+                    <li key={index}>
+                      <Item key={index} {...item}></Item>
                     </li>
                   ))}
                 </ul>
               </div>
-            )))
-          : (sortedItems.map((item, index) => (
+            ))
+          : sortedItems.map((item, index) => (
               <li key={index}>
                 <Item key={index} {...item}></Item>
               </li>
-            )))}
+            ))}
       </ul>
     </main>
   );
