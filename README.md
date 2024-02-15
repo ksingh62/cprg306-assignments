@@ -1,6 +1,6 @@
 <h1>CPRG306 Assignments Repository</h1>
 
-The web app is hosted by Vercel at https://cprg306-assignments-rose-mu.vercel.app/
+The web app is hosted by Vercel at https://cprg306-assignments-kapilmeet.vercel.app/
 
 <h2>Overview</h2>
 
