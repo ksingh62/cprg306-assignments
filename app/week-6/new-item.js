@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 
-function NewItem() {
+function NewItem({ onAddItem }) {
   const [name, setName] = useState("");
   const [quantity, setQuantity] = useState(1);
   const [category, setCategory] = useState("produce");
@@ -10,16 +10,14 @@ function NewItem() {
     event.preventDefault();
 
     const item = {
+      id: "",
       name,
       quantity,
       category,
     };
 
+    onAddItem(item);
     console.log(item);
-
-    alert(`Added Item: ${name}
-Quantity: ${quantity}
-Category: ${category}`);
 
     // Reset state variables to initial values
     setName("");
