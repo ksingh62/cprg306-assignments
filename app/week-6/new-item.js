@@ -65,8 +65,8 @@ function NewItem({ onAddItem }) {
   };
 
   return (
-    <main className="flex align-items justify-center">
-      <div className="w-full max-w-md bg-slate-800 text-black p-2 rounded-lg shadow-md mt-2 mb-8">
+    <main className="flex align-items">
+      <div className="w-full max-w-sm bg-slate-950 text-black rounded-lg shadow-md mt-2 mb-8">
         <h3 className="text-xl font-bold text-white">Add New Item</h3>
         <form className="w-full mt-1" onSubmit={handleSubmit}>
           <div className="mb-4">
