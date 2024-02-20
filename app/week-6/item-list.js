@@ -9,9 +9,9 @@ function ItemList({ items }) {
     if (sortBy === "name") {
       return a.name.localeCompare(b.name);
     } else if (sortBy === "category") {
-      return a.category.localeCompare(b.category);
+      return a.category.localeCompare(b.category) || a.name.localeCompare(b.name);
     } else if (sortBy === "groupedCategory") {
-      return a.category.charAt(0).localeCompare(b.category.charAt(0));
+      return a.category.charAt(0).localeCompare(b.category.charAt(0)) || a.name.localeCompare(b.name);
     }
     return 0;
   });
