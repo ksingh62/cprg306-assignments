@@ -66,8 +66,9 @@ function NewItem({ onAddItem }) {
 
   return (
     <main className="flex align-items justify-center">
-      <div className="w-full max-w-md bg-slate-800 text-black p-8 rounded-lg shadow-md mt-8">
-        <form className="w-full" onSubmit={handleSubmit}>
+      <div className="w-full max-w-md bg-slate-800 text-black p-2 rounded-lg shadow-md mt-2 mb-8">
+        <h3 className="text-xl font-bold text-white">Add New Item</h3>
+        <form className="w-full mt-1" onSubmit={handleSubmit}>
           <div className="mb-4">
             <input
               required
@@ -106,9 +107,9 @@ function NewItem({ onAddItem }) {
 
           <button
             type="submit"
-            className="w-full py-2 px-4 bg-blue-500 hover:bg-blue-700 rounded-lg text-white"
+            className="w-full py-2 px-4 bg-blue-500 hover:bg-blue-700 rounded-lg text-white font-bold"
           >
-            Submit
+            +
           </button>
         </form>
       </div>
