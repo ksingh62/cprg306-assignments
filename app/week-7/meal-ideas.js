@@ -27,8 +27,10 @@ export default function MealIdeas({ ingredient }) {
 
   return (
     <div>
-      <h2 className="text-xl font-bold mb-4">Meal Ideas for {ingredient}</h2>
-      <p>Here are some meal ideas using {ingredient}</p>
+      <h2 className="text-xl font-bold mb-2">Meal Ideas</h2>
+      {
+        !ingredient ? <p>Select an item to see meal ideas</p> : meals.length > 0 ? <p>Here are some meal ideas using {ingredient.trim()}: </p> : <p>No meals found for {ingredient}</p>
+      }
       <div>
         <ul>
           {meals.map((meal) => (
