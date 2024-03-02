@@ -2,7 +2,7 @@
 import { useState } from "react";
 import Item from "./item";
 
-function ItemList({ items }) {
+function ItemList({ items, onItemSelect }) {
   const [sortBy, setSortBy] = useState("name");
 
   const sortedItems = [...items].sort((a, b) => {
@@ -67,7 +67,7 @@ function ItemList({ items }) {
                 <ul>
                   {items.map((item, index) => (
                     <li key={index}>
-                      <Item key={index} {...item}></Item>
+                      <Item key={index} {...item} onSelect={onItemSelect}></Item>
                     </li>
                   ))}
                 </ul>
@@ -75,7 +75,7 @@ function ItemList({ items }) {
             ))
           : sortedItems.map((item, index) => (
               <li key={index}>
-                <Item key={index} {...item}></Item>
+                <Item key={index} {...item} onSelect={onItemSelect}></Item>
               </li>
             ))}
       </ul>
