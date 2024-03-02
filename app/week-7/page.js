@@ -23,11 +23,14 @@ function Page() {
   };
 
   return (
-    <main className="bg-slate-950 text-white m-2 p-2">
+    <main className="bg-slate-950 text-white m-2 p-2 flex">
       <div className="max-w-md w-full">
         <h1 className="text-3xl font-bold mb-4">Shopping List</h1>
         <NewItem onAddItem={handleAddItem}></NewItem>
         <ItemList items={items} onItemSelect={handleItemSelect}></ItemList>
+      </div>
+  
+      <div className="flex-1 max-w-sm m-2 mt-16">
         <MealIdeas ingredient={selectedItemName}/>
       </div>
     </main>
