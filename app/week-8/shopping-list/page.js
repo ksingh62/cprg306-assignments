@@ -10,7 +10,7 @@ import Link from "next/link";
 function Page() {
   const [items, setItems] = useState(itemsData);
   const [selectedItemName, setSelectedItemName] = useState("");
-  const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
+  const { user, firebaseSignOut } = useUserAuth();
 
   const handleAddItem = (newItem) => {
     setItems([...items, newItem]);
