@@ -10,7 +10,7 @@ import Link from "next/link";
 function Page() {
   const [items, setItems] = useState(itemsData);
   const [selectedItemName, setSelectedItemName] = useState("");
-  const { user } = useUserAuth();
+  const { user, gitHubSignIn, firebaseSignOut } = useUserAuth();
 
   const handleAddItem = (newItem) => {
     setItems([...items, newItem]);
@@ -30,6 +30,8 @@ function Page() {
       <main className="bg-slate-950 text-white m-2 p-2 flex">
         <div className="max-w-md w-full">
           <h1 className="text-3xl font-bold mb-4">Shopping List</h1>
+
+          <button onClick={firebaseSignOut} className="border-2 border-sky-500 rounded p-1 px-3 hover:bg-sky-500">Sign out</button>
           <NewItem onAddItem={handleAddItem}></NewItem>
           <ItemList items={items} onItemSelect={handleItemSelect}></ItemList>
         </div>

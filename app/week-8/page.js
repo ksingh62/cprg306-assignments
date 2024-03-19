@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { useUserAuth } from "./_utils/auth-context";
 
 export default function Page() {
@@ -31,11 +32,11 @@ export default function Page() {
             onClick={gitHubSignIn}
             className="hover:underline ml-4 flex flex-direction items-center justify-center gap-5 border p-2 rounded-md"
           >
-            <img
+            <Image
               src="/github-mark-white.png"
               alt="GitHub logo"
-              width="25px"
-              height="25px"
+              width={25}
+              height={25}
             />{" "}
             Sign in with GitHub
           </button>
