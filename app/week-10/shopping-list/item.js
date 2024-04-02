@@ -1,6 +1,6 @@
 function Item({ id, name, quantity, category, onSelect, onDelete }) {
   return (
-    <div>
+    <>
       <div onClick={() => onSelect(name)}>
         <ul className="bg-slate-900 mb-4 mt-4 ml-2 container p-2 max-w-sm">
           <li className="text-xl font-bold">{name}</li>
@@ -8,16 +8,17 @@ function Item({ id, name, quantity, category, onSelect, onDelete }) {
             Buy {quantity} in {category}
           </li>
         </ul>
+        <button
+          onClick={(e) => {
+            e.stopPropagation();
+            onDelete(id);
+          }}
+          className="bg-red-500 p-2"
+        >
+          Delete
+        </button>
       </div>
-      <button
-        onClick={(e) => {
-          e.stopPropagation();
-          onDelete(id);
-        }}
-      >
-        Delete
-      </button>
-    </div>
+    </>
   );
 }
 

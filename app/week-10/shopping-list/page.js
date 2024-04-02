@@ -19,14 +19,6 @@ function Page() {
     }
   }
 
-  const handleDeleteItem = async (itemId) => {
-    if (user) {
-      await deleteItem(user.uid, itemId);
-      setItems(items.filter(item => item.id !== itemId));
-    }
-  };
-  
-
   useEffect(() => {
     loadItems();
   }, [user?.uid]);
@@ -39,6 +31,21 @@ function Page() {
       setItems((prevItems) => [...prevItems, updatedItem]);
     }
   };
+
+  async function handleDeleteItem(itemId) {
+    if (user) {
+      try {
+        // Attempt to delete the item from Firestore
+        await deleteItem(user.uid, itemId);
+  
+        // If successful, filter the deleted item out of the local state
+        setItems(currentItems => currentItems.filter(item => item.id !== itemId));
+      } catch (error) {
+        console.error("Failed to delete item:", error);
+        // Handle any errors (e.g., show an error message to the user)
+      }
+    }
+  }
 
   const handleItemSelect = (itemName) => {
     let cleanedItemName = itemName.split(",")[0].trim();

@@ -19,5 +19,6 @@ export async function addItem(userId, item) {
 }
 
 export async function deleteItem(userId, itemId) {
-    await deleteDoc(doc(db, "users", userId, "items", itemId));
+    const itemDocRef = doc(db, "users", userId, "items", itemId);
+    await deleteDoc(itemDocRef);
   }
