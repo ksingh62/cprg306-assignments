@@ -1,7 +1,7 @@
 function Item({ id, name, quantity, category, onSelect, onDelete }) {
   return (
-    <div className="bg-slate-900 mb-4 mt-4 ml-2 container p-2 max-w-sm flex justify-between">
-      <div onClick={() => onSelect(name)}>
+    <div onClick={() => onSelect(name)} className="bg-slate-900 mb-4 mt-4 ml-2 container p-2 max-w-sm flex justify-between cursor-pointer hover:bg-slate-800">
+      <div >
         <ul>
           <li className="text-xl font-bold">{name}</li>
           <li className="text-sm">
