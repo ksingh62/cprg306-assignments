@@ -1,19 +1,35 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import ItemList from "./item-list";
 import NewItem from "./new-item";
-import itemsData from "./items.json";
 import MealIdeas from "./meal-ideas";
 import { useUserAuth } from "../_utils/auth-context";
 import Link from "next/link";
+import { getItems, addItem } from "../_services/shopping-list-service";
 
 function Page() {
-  const [items, setItems] = useState(itemsData);
+  const [items, setItems] = useState([]);
   const [selectedItemName, setSelectedItemName] = useState("");
   const { user, firebaseSignOut } = useUserAuth();
 
-  const handleAddItem = (newItem) => {
-    setItems([...items, newItem]);
+  async function loadItems() {
+    if (user) {
+      const items = await getItems(user.uid);
+      setItems(items);
+    }
+  }
+
+  useEffect(() => {
+    loadItems();
+  }, [user?.uid]);
+
+  const handleAddItem = async (itemData) => {
+    if (user) {
+      const newItem = { ...itemData, quantity: parseInt(itemData.quantity) }; // Ensure data is correctly formatted
+      const itemId = await addItem(user.uid, newItem);
+      const updatedItem = { ...newItem, id: itemId }; // Include the new Firestore document ID
+      setItems((prevItems) => [...prevItems, updatedItem]);
+    }
   };
 
   const handleItemSelect = (itemName) => {
@@ -31,7 +47,12 @@ function Page() {
         <div className="max-w-md w-full">
           <h1 className="text-3xl font-bold mb-4">Shopping List</h1>
 
-          <button onClick={firebaseSignOut} className="border-2 border-sky-500 rounded p-1 px-3 hover:bg-sky-500">Sign out</button>
+          <button
+            onClick={firebaseSignOut}
+            className="border-2 border-sky-500 rounded p-1 px-3 hover:bg-sky-500"
+          >
+            Sign out
+          </button>
           <NewItem onAddItem={handleAddItem}></NewItem>
           <ItemList items={items} onItemSelect={handleItemSelect}></ItemList>
         </div>
@@ -45,7 +66,9 @@ function Page() {
     return (
       <div>
         <p>You need to be signed in to access the Shopping List.</p>
-        <p className="hover:underline"><Link href="/week-8">Sign in on this page </Link></p>
+        <p className="hover:underline">
+          <Link href="/week-8">Sign in on this page </Link>
+        </p>
       </div>
     );
   }

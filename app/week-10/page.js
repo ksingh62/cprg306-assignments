@@ -44,7 +44,7 @@ export default function Page() {
       )}
 
       {user !== null && (
-        <Link className="text-lg hover:underline" href={`week-8/shopping-list`}>
+        <Link className="text-lg hover:underline" href={`week-10/shopping-list`}>
           Continue to your Shopping List
         </Link>
       )}
