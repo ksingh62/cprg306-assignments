@@ -5,7 +5,7 @@ import NewItem from "./new-item";
 import MealIdeas from "./meal-ideas";
 import { useUserAuth } from "../_utils/auth-context";
 import Link from "next/link";
-import { getItems, addItem } from "../_services/shopping-list-service";
+import { getItems, addItem, deleteItem } from "../_services/shopping-list-service";
 
 function Page() {
   const [items, setItems] = useState([]);
@@ -18,6 +18,14 @@ function Page() {
       setItems(items);
     }
   }
+
+  const handleDeleteItem = async (itemId) => {
+    if (user) {
+      await deleteItem(user.uid, itemId);
+      setItems(items.filter(item => item.id !== itemId));
+    }
+  };
+  
 
   useEffect(() => {
     loadItems();
@@ -54,7 +62,7 @@ function Page() {
             Sign out
           </button>
           <NewItem onAddItem={handleAddItem}></NewItem>
-          <ItemList items={items} onItemSelect={handleItemSelect}></ItemList>
+          <ItemList items={items} onItemSelect={handleItemSelect} onDelete={handleDeleteItem}></ItemList>
         </div>
 
         <div className="flex-1 max-w-sm m-2 mt-16">
@@ -67,7 +75,7 @@ function Page() {
       <div>
         <p>You need to be signed in to access the Shopping List.</p>
         <p className="hover:underline">
-          <Link href="/week-8">Sign in on this page </Link>
+          <Link href="/week-10">Sign in on this page </Link>
         </p>
       </div>
     );
